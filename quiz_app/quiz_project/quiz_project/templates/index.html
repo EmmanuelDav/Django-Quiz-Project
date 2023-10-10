@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Question:</h2>
+<p>{{ question }}</p>
+
+<form action="{% url 'form_view' %}" method="post">
+{% csrf_token %}
+{% for option in options %}
+<input type="radio" name="answer" value="{{ option }}" id="{{ option }}">
+<label for="{{ option }}">{{ option }}</label><br>
+{% endfor %}
+<button type="submit">Check Answer</button>
+</form>
+{% endblock %}
+
